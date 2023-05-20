@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="searchbar">
+    <ion-searchbar #searchbar animated="true" mode="ios" placeholder="Search User by Name or Email"></ion-searchbar>
+    <ion-button class="search" (click)="searchUser(searchbar.value)" color="light" size="small" mode="ios"><ion-icon name="search-outline"></ion-icon></ion-button>
+  </div>
+  <ion-button (click)="log()" *ngIf="!isLogged" color="light" size="default" mode="ios"><ion-icon name="log-in-outline"></ion-icon>Login/Register</ion-button>
+  <ion-button (click)="logout()" *ngIf="isLogged" color="light" size="default" mode="ios"><ion-icon name="log-out-outline"></ion-icon>Logout</ion-button>
+  <span class='email' *ngIf="isLogged">{{email}}</span>
+</div>
+<div class="slider-container">
+  <ion-segment value="default" mode="ios" color="dark">
+    <ion-segment-button (click)="goHome()" layout="icon-start" value="default">
+      <ion-label>Home</ion-label>
+      <ion-icon name="earth-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button (click)="goUsers()"  layout="icon-start" value="buttons">
+      <ion-label>Users</ion-label>
+      <ion-icon name="people-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+</div>

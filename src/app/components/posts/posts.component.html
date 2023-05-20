@@ -1,0 +1,54 @@
+<div class="container">
+  <div *ngFor="let post of posts; let i = index">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <img mat-card-avatar class="example-header-image" src="{{avatars[i]}}">
+        <mat-card-title><a [routerLink]="" >{{names[i]}}</a></mat-card-title>
+        <mat-card-subtitle>city | category</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{imgs[i]}}">
+      <mat-card-content>
+        <p [ngClass]="{'body-opened': bodyOpened[i], 'body-closed' : !bodyOpened[i]}">
+          <b>{{post.title}}</b><br>
+          {{post.body}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <ion-button (click)="showBody(i)" size="default">More</ion-button>
+        <ion-button *ngIf="!postLiked[i]" (click)="like(i)" size="default">LIKE</ion-button>
+        <ion-button *ngIf="postLiked[i]" (click)="like(i)" size="default">LIKED!</ion-button>
+        <ion-button id="open-modal" expand="block" (click)="openComments(i)" size="default">COMMENT</ion-button>
+      </mat-card-actions>
+      <mat-list *ngIf="commentsOpened[i]">
+        <mat-list-item *ngFor="let comment of comments; let c = index">
+          <img matListItemAvatar src="{{commentAvatar[c]}}">
+          <h3 matListItemTitle>{{comment.name}}</h3>
+          <p matListItemLine class="comment">
+            {{comment.body}}
+          </p>
+        </mat-list-item>
+        <form #commentForm="ngForm" (ngSubmit)="publishComment(commentForm, post.user_id, post.id, i)">
+          <ion-item>
+            <ion-input required #name type="text" name="name" label="Name" labelPlacement="stacked" placeholder="Enter your name" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input required #email type="email" name="email" label="Email" labelPlacement="stacked" placeholder="Enter your email" ngModel email></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input required #comment type="text" name="comment" label="Comment" labelPlacement="stacked" placeholder="Enter comment" ngModel></ion-input>
+          </ion-item>
+          <ion-button [disabled]="!commentForm.valid" type="submit" size="small" mode="ios">Publish</ion-button>
+        </form>
+      </mat-list>
+    </mat-card>
+  </div>
+  <ion-item class="paginator">
+    <ion-label>Show</ion-label>
+    <ion-select (ionChange)="onSelectShowPosts($event)" placeholder="  10">
+      <ion-select-option value="10">10</ion-select-option>
+      <ion-select-option value="25">25</ion-select-option>
+      <ion-select-option value="50">50</ion-select-option>
+      <ion-select-option value="100">100</ion-select-option>
+    </ion-select>
+</ion-item>
+</div>

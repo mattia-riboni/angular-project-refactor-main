@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="head">
+    <div class="title">
+      <img class="avatar" src="{{avatar}}"/>
+      <h1>{{name}}'s Porfile</h1>
+    </div>
+    <div class="info">
+      <p>Email: {{email}}</p><br>
+      <p>Default city: Rome </p>
+    </div>
+  </div>
+  <h2>Posts</h2>
+  <div class="btns">
+    <ion-button size="default" (click)="newPost()" mat-button>New Post</ion-button>
+    <ion-button size="default" (click)="editingUser()" mat-button>Edit User</ion-button>
+    <ion-button size="default" id="present-alert" mat-button>Delete User</ion-button>
+    <ion-alert
+    trigger="present-alert"
+    header="Do you want to delete this user?"
+    [buttons]="alertButtons"
+    ></ion-alert>
+
+  </div>
+  <div *ngIf="newPostOpened" class="container" id="new-post">
+    <h2><b>New Post</b></h2>
+    <div class="form-container">
+      <form #newPostForm="ngForm" (ngSubmit)="createNewPost(newPostForm)">
+        <ion-item fill="outline">
+          <ion-label position="floating">Title</ion-label>
+          <ion-input required="true" name="title" color="tertiary" type="text" ngModel text></ion-input>
+        </ion-item>
+        <ion-item fill="outline">
+          <ion-label position="floating">Body</ion-label>
+          <ion-input required="true" name="body" color="tertiary" type="text" ngModel text></ion-input>
+        </ion-item>
+        <ion-item fill="outline">
+          <ion-label position="floating">city</ion-label>
+          <ion-input required="true" name="city" color="tertiary" type="text" ngModel text></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Status</ion-label>
+          <ion-select required="true" placeholder="Make a Selection">
+            <ion-select-option value="public">Public</ion-select-option>
+            <ion-select-option value="private">Private</ion-select-option>
+          </ion-select>
+      </ion-item>
+        <ion-item>
+          <ion-label>Category</ion-label>
+          <ion-select  required="true" placeholder="Make a Selection">
+            <ion-select-option value="event">Event</ion-select-option>
+            <ion-select-option value="culture">Culture</ion-select-option>
+            <ion-select-option value="traffic">Traffic</ion-select-option>
+            <ion-select-option value="news">News</ion-select-option>
+            <ion-select-option value="nature">Nature</ion-select-option>
+            <ion-select-option value="report">Report</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-button size="default" [disabled]="!newPostForm.valid" type="submit">Publish</ion-button>
+      <ion-button size="default" (click)="newPost()" >Close</ion-button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="editingUserOpened" id="editing-user"class="container">
+    <h2><b>Edit User</b></h2>
+  <div class="form-container">
+    <form #editUserForm="ngForm" (ngSubmit)="editUser(editUserForm)">
+      <ion-item fill="outline">
+        <ion-label position="floating">{{user.name}}</ion-label>
+        <ion-input required="true" name="firstName" color="tertiary" type="text" ngModel text></ion-input>
+      </ion-item>
+      <ion-item fill="outline">
+        <ion-label position="floating">{{user.email}}</ion-label>
+        <ion-input required="true" name="email" color="tertiary" type="email" ngModel text></ion-input>
+      </ion-item>
+      <ion-item fill="outline">
+        <ion-label position="floating">Default City</ion-label>
+        <ion-input name="city" color="tertiary" type="text" ngModel text></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select (ionChange)="onChangeGender($event)" required="true" mode="ios" placeholder="Make a Selection">
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="female">Female</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-button size="default" [disabled]="!editUserForm.valid" type="submit">Edit</ion-button>
+    <ion-button size="default" (click)="editingUser()">Close</ion-button>
+    </form>
+  </div>
+</div>
+  <app-posts [userId]="userId" [name]="name" [refreshCount]="refreshPostsCount"></app-posts>
+</div>
+

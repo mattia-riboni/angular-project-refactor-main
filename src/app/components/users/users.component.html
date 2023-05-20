@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="head">
+    <h1>Users</h1>
+    <div class="btns">
+      <ion-button (click)="createUser()"  size="small" mode="ios">New User</ion-button>
+      <ion-button (click)="showDelete()" size="small" mode="ios">Delete Users</ion-button>
+    </div>
+  </div>
+  <ion-item>
+    <ion-label>Show</ion-label>
+    <ion-select type="ios" (ionChange)="onSelectShowUsers($event)" placeholder="10">
+      <ion-select-option value="10">10 users</ion-select-option>
+      <ion-select-option value="15">15 users</ion-select-option>
+      <ion-select-option value="20">20 users</ion-select-option>
+      <ion-select-option value="50">50 users</ion-select-option>
+    </ion-select>
+</ion-item>
+  <div *ngIf="creatingNewUser">
+    <h1>New user</h1>
+  <div class="form-container">
+    <form #newPostForm="ngForm" (ngSubmit)="createNewUser(newPostForm)">
+      <ion-item fill="outline">
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input required="true" name="firstName" color="tertiary" type="text" ngModel text></ion-input>
+      </ion-item>
+      <ion-item fill="outline">
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input required="true" name="lastName" color="tertiary" type="text" ngModel text></ion-input>
+      </ion-item>
+      <ion-item fill="outline">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input required="true" name="email" color="tertiary" type="email" ngModel text></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select (ionChange)="onSelectGender($event)" required="true" placeholder="Make a Selection">
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="female">Female</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <ion-button size="default" [disabled]="!newPostForm.valid" type="submit">Create</ion-button>
+    <ion-button size="default" (click)="createUser()">Close</ion-button>
+    </form>
+  </div>
+</div>
+    <div  class="users-container" *ngFor="let user of users; index as i">
+      <div class="user-container">
+        <div class="delete" *ngIf="deleting">
+          <ion-button (click)="deleteUser(user.id, user.name, i)" size="small" mode="ios">Delete</ion-button>
+        </div>
+        <img *ngIf="!deleting" class="avatar" src="{{avatars[i]}}">
+        <a routerLink="/users/{{users[i].id}}">{{user.name}}</a>
+        <p>{{user.email}}</p>
+        <div [ngClass]="{'green-dot' : user.status == 'active' , 'red-dot' : user.status == 'inactive'}"></div>
+      </div>
+    </div>
+</div>
+

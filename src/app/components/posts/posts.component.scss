@@ -1,0 +1,64 @@
+.container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.body-closed{
+  max-height: 100px;
+  overflow-y: hidden;
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+}
+
+.body-opened{
+  max-height: max-content;
+  overflow-y: auto;
+}
+
+.example-card {
+  max-width: 400px;
+  background-color: rgb(241, 239, 239);
+  border: 1px solid rgb(59, 59, 59);
+  margin-top: 5vh;
+}
+
+.header-image {
+  background-size: cover;
+}
+
+ion-button{
+  margin: 1vh 1vw 1vh 1vw;
+  width: 100px;
+  --background: rgb(231, 105, 105);
+}
+
+
+mat-card-content{
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+mat-card-subtitle{
+  color:black;
+}
+
+a{
+  cursor: pointer;
+  color:rgb(150, 150, 248)
+}
+
+.new-commment{
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-container{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.paginator{
+  margin-top: 20px;
+}
