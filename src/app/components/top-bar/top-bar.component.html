@@ -5,7 +5,7 @@
   </div>
   <ion-button (click)="log()" *ngIf="!isLogged" color="light" size="default" mode="ios"><ion-icon name="log-in-outline"></ion-icon>Login/Register</ion-button>
   <ion-button (click)="logout()" *ngIf="isLogged" color="light" size="default" mode="ios"><ion-icon name="log-out-outline"></ion-icon>Logout</ion-button>
-  <span class='email' *ngIf="isLogged">{{email}}</span>
+  <span class='email'>{{email}}</span>
 </div>
 <div class="slider-container">
   <ion-segment value="default" mode="ios" color="dark">

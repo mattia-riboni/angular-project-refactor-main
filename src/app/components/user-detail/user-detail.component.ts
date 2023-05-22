@@ -104,7 +104,9 @@ constructor(
   editUser(form: NgForm){
     this.server.editUser(this.userId, form.value.firstName, form.value.email, this.gender).subscribe(() => {
       this.presentAlert(this.user.name, 'done', 'user updated');
-      window.location.reload();
+      this.name = form.value.name;
+      this.email = form.value.email;
+      this.getUser();
     },(e) => {
       this.presentAlert(this.user.name, 'Error', e.message )
     })
