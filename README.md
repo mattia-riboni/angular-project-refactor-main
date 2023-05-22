@@ -26,7 +26,7 @@
 ## About The Project
 ![City-network](/src/assets/screenshot.png)
 
-This start2impact (for NTTData) project has been made to help to connect people in cities, sharing local news, events, informations, sport and so more. The usage of this app is really easy thanks to his social network look. To have a look without install the project and run it locally, here's a [web version](https://city-network.netlify.app/) deployed with [Netlify](https://www.netlify.com/)  
+This start2impact (for NTTData) project has been made to help to connect people in cities, sharing local news, events, informations, sport and so more. The usage of this app is really easy thanks to his social network look. To have a look without install the project and run it locally, here's a [web version](https://angular-project-s2i.netlify.app/login) deployed with [Netlify](https://www.netlify.com/)  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
