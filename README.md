@@ -99,9 +99,8 @@ You should:
 
 The usage is made very simple thanks to a similarity to come of the most famous social-networks. There are three bigger sections:
 
- - Global: here you can see the most relevant posts about the default city, it can be changed searching a new city inside the searchbar on top and pressing the search button. At the moment only posts for Rome, Milan, Turin and Naples are available. Any post can be commented and liked clicking on his relative button.
- - Personal: it's like the Global section, but here you can scroll your friend's private posts; friends feature will be implemented soon!
- - Users: there is a list of user (now those are fake users generated with mockturtle, only for example purposes). Any user can be clicked to reach his personal page, where information and post can be edited or created. The two buttons on top allow the creation or elimination of a user 
+ - Posts: here you can see the most relevant posts. Any post can be commented and liked clicking on his relative button.
+ - Users: there is a list of user (generated with GoRest, only for example purposes). Any user can be clicked to reach his personal page, where information and post can be edited or created. The two buttons on top allow the creation or elimination of a user 
  
  Every section is protected by authentiction, users can login or register in the dedicated section, on top right; the logout button is shown only if the user is already logged, in the same position of login/register button.
 
