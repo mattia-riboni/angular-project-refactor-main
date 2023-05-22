@@ -36,6 +36,7 @@ export class TopBarComponent {
   }
 
   logout(){
+    this.email = '';
     this.authService.logout()
     this.router.navigate(['/login'])
     this.isLogged = false
